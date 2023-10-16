@@ -1,0 +1,33 @@
+###
+
+GET http://localhost:3000/patient/search?name=John%20Doe
+
+
+
+###
+POST http://localhost:3000/patient/create
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "gender": "male",
+  "birthDate": "1995-01-01",
+  "address": "123 Main St",
+  "questionnaireResponses": {
+    "foodForTonight": "Y",
+    "foodWorry": "N",
+    "housingSafe": "Y",
+    "housingAvailable": "Y",
+    "housingWorry": "N",
+    "transportationAvailable": "Y",
+    "transportationWorry": "N",
+    "safetyFeeling": "Y",
+    "physicalHurt": "N",
+    "emotionalAbuse": "N",
+    "suicidalThoughts": "N",
+    "alcoholUseFrequency": "Weekly",
+    "prescriptionDrugUseFrequency": "Monthly",
+    "illegalDrugUseFrequency": "Never",
+    "tobaccoUseFrequency": "Daily"
+  }
+}
