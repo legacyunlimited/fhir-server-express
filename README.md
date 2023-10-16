@@ -2,7 +2,7 @@
 
 Patient Service API This repository contains a simple Express.js server that provides a Patient Service API for managing patient data. Below, you'll find instructions on how to set up and use the server.
 
-Start the Server (The server will run on http://localhost:3000): npm start
+**Start the Server** (The server will run on http://localhost:3000): npm start
 
 What the Code Does The API allows you to create patient records, search for patients by name, and retrieve patient data. The patient data is stored in an SQLite database named patients.db.
 
