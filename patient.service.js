@@ -98,6 +98,51 @@ router.post('/create', async (req, res) => {
     }
   }
 
+
+  router.put('/update/:medicalRecordNumber', async (req, res) => {
+    try {
+      // Parse the updated patient data from the request body
+      const { name, gender, birthDate, address, questionnaireResponses } = req.body;
+      const { medicalRecordNumber } = req.params; // Extract the medical record number from the request parameters
+  
+      // Check if the provided medical record number exists in the database
+      const existingPatient = await queryPatientData({ medicalRecordNumber });
+  
+      if (!existingPatient) {
+        return res.status(404).json({ error: 'Patient not found' });
+      }
+  
+      // Update the patient's information in the database
+      await updatePatient({ medicalRecordNumber, name, gender, birthDate, address, questionnaireResponses });
+  
+      res.json({ message: 'Patient updated successfully', medicalRecordNumber });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'An error occurred' });
+    }
+  });
+  
+  
+  async function updatePatient({ medicalRecordNumber, name, gender, birthDate, address, questionnaireResponses }) {
+    try {
+      const query = `
+        UPDATE patients 
+        SET name = ?,
+            gender = ?,
+            birthDate = ?,
+            address = ?,
+            questionnaireResponses = ?
+        WHERE medicalRecordNumber = ?
+      `;
+      await db.run(query, [name, gender, birthDate, address, JSON.stringify(questionnaireResponses), medicalRecordNumber]);
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+  
+
+
   function generateRandomSixDigitNumber() {
     const min = 100000;
     const max = 999999;

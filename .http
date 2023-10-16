@@ -31,3 +31,33 @@ Content-Type: application/json
     "tobaccoUseFrequency": "Daily"
   }
 }
+
+
+###
+PUT http://localhost:3000/patient/update/921899
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "gender": "male",
+  "birthDate": "1995-01-01",
+  "address": "456 Elm St",
+  "questionnaireResponses": {
+    "foodForTonight": "N",
+    "foodWorry": "Y",
+    "housingSafe": "Y",
+    "housingAvailable": "Y",
+    "housingWorry": "N",
+    "transportationAvailable": "Y",
+    "transportationWorry": "N",
+    "safetyFeeling": "Y",
+    "physicalHurt": "N",
+    "emotionalAbuse": "N",
+    "suicidalThoughts": "N",
+    "alcoholUseFrequency": "Daily",
+    "prescriptionDrugUseFrequency": "Weekly",
+    "illegalDrugUseFrequency": "Never",
+    "tobaccoUseFrequency": "Daily"
+  }
+}
+
